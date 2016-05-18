@@ -1,0 +1,39 @@
+<ion-view view-title="流水">
+
+  <ion-content class="">
+    <div class="list list-inset">
+     <!-- <label class="login-title">
+        <h3 class="title">登录</h3>
+      </label>-->
+      <div id="user-info">
+        <form id="userForm" name="userForm" role="form" novalidate="novalidate">
+          <label class="item item-input">
+            <input type="text" placeholder="银行名称" ng-model="info.bankname" name="bankname" required >
+          </label>
+          <p class="error" ng-show="userForm.bankname.$dirty&&userForm.bankname.$error.required">银行名称不能为空！</p>
+          <label class="item item-input">
+            <input type="text" placeholder="银行流水" ng-model="info.serialnumeric" name="serialnumeric" required >
+          </label>
+          <p class="error" ng-show="userForm.serialnumeric.$dirty&&userForm.serialnumeric.$error.required">银行流水不能为空！</p>
+          <label class="item item-input">
+            <input type="date" ng-model="info.paytime" name="paytime" required>
+          </label>
+          <p class="error" ng-show="userForm.paytime.$dirty&&userForm.paytime.$error.required">时间不能为空！</p>
+
+            <button class="button button-full button-dark" ng-click="luishuizhifu(userForm)">
+                确定支付
+            </button>
+        </form>
+      </div>
+      <!--<div class="row" id="check-wrap">
+        <div class="col">
+          <ion-checkbox id="autologin">自动登录</ion-checkbox>
+        </div>
+        <div class="col">
+          <ion-checkbox id="showpwd">显示密码</ion-checkbox>
+        </div>
+      </div>-->
+
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,52 @@
+<ion-view class="store-category" view-title="分类搜索">
+    <ion-nav-buttons side="left">
+        <a href="javascript:history.back(-1)" class="button button-icon icon ion-ios-arrow-thin-left" nav-direction="back"></a>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button  icon ion-ios-cart-outline button-clear" ui-sref="tab.cart">   <!-- 使按钮点击可以弹出左侧边栏 -->
+        </button>
+    </ion-nav-buttons>
+    <ion-content class="store-category-content ">
+        <div class="list list-inset">
+            <label class="item item-input" ui-sref="store-search">
+                <label class="search-btn"><i class="icon ion-search placeholder-icon"></i></label>
+                <input type="text" placeholder="搜索">
+            </label>
+        </div>
+
+        <div class="store-category-list-1 padding-left padding-right" ng-repeat="classItem in storeInfo">
+            <div class="row " style="background: #dcdedd">
+                <div class="col">{{classItem.goods_class.name}}</div>
+            </div>
+            <ul class="store-category-list-2 light-bg" ng-if="classItem.goods_class.childs.length>0">
+                <li ng-repeat="childClassItem in classItem.goods_class.childs">{{childClassItem.name}}</li>
+            </ul>
+        </div>
+
+        <!-- 商品列表 -->
+        <div style="margin-top: 20px;">
+            <div class="collect-goods-panel">
+                <ul class="collect-goods-list home-shop-list">
+                    <li class="collect-goods-item" ng-repeat="goodsItem in goodsList" on-tap='myHref(goodsItem.id)'>
+                        <div class="home-shop-item-img">
+                            <img ng-if="goodsItem.goodsimg" src="{{imgUrl}}{{goodsItem.goodsimg}}">
+                            <img ng-if="!goodsItem.goodsimg" src="img/item_pic.jpg">
+                        </div>
+                        <div class="home-shop-item-other">
+                            <label class="goods-des">
+                                {{goodsItem.goodsname}}
+                            </label>
+                            <div class="baike-line"></div>
+                            <label class="goods-price">
+                                ￥{{goodsItem.marketprice}}
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div ng-show="shop.moredata"  class="bottom_show"> 亲，数据加载完啦！</div>
+        <ion-infinite-scroll on-infinite="shop.findGoods()" distance="1%" ng-if="!shop.moredata"></ion-infinite-scroll>
+    </ion-content>
+</ion-view>

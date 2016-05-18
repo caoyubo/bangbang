@@ -1,0 +1,44 @@
+<ion-view title="创建店铺" class="store-register">
+  <!--<ion-nav-buttons side="left">-->
+    <!--<a class="button button-icon icon ion-ios-arrow-thin-left" ui-sref="tab.home" nav-direction="back"></a>-->
+  <!--</ion-nav-buttons>-->
+  <ion-content class="store-register-content">
+    <form name="myForm" id="myForm" role="form" novalidate="novalidate">
+      <div class="row">
+        <div class="col col-100">
+          <div class="store-logo file">
+            <img ng-src="{{logo}}" ngf-select="upload($file)">
+          </div>
+          <div class="text-center" ng-if="upload_info.uploading">上传进度{{upload_info.percent}}%</div>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <p><input type="text" placeholder="店铺名称" name="storeName" required ng-model="store_info.storeName"></p>
+          <p class="error" ng-show="myForm.storeName.$dirty&&myForm.storeName.$error.required">店铺名不能为空！</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p><input type="text" placeholder="真实姓名" name="trueName" required ng-model="store_info.trueName"></p>
+          <p class="error" ng-show="myForm.trueName.$dirty&&myForm.trueName.$error.required">真实姓名不能为空！</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p><input type="text" placeholder="身份证号码" name="idcard" required ng-model="store_info.idcard"></p>
+          <p class="error" ng-show="myForm.idcard.$dirty&&myForm.idcard.$error.required">身份证号码不能为空！</p>
+        </div>
+      </div>
+    </form>
+    <div class="law text-center">开店法律声明</div>
+
+    <div class="next padding">
+      <button class="button button-full button-energized" ng-click="request.addStore(myForm)">
+        同意并继续
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

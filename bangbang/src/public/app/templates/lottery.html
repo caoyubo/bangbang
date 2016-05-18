@@ -1,0 +1,101 @@
+<ion-view class="lottery" view-title="今日抽奖">
+    <ion-nav-buttons side="left">
+        <back-nav></back-nav>
+    </ion-nav-buttons>
+    <ion-content class="lottery-content">
+
+        <div class="lottery-title">
+            <h2>今日幸运号码</h2>
+        </div>
+
+        <div class="lottery_content lottery—height">
+            <div class="lottery_content_t">
+                    8888
+            </div>
+            <div  class="lottery-date">
+                第20160230期
+            </div>
+            <div class="lottery-money">
+                奖金：￥25000.00
+            </div>
+        </div>
+
+        <div class="lottery-table">
+            <h2>今日中奖</h2>
+            <div class="row">
+                <div class="col text-center">
+                    <table class="lottery-tab">
+                        <tr>
+                            <th>用户</th>
+                            <th>中奖号码</th>
+                            <th>奖品</th>
+                        </tr>
+                        <tr >
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                        </tr>
+                        <tr ng-repeat="item in lottery.lotteryList">
+                            <td>{{item.uname}}</td>
+                            <td>{{item.hidenphone}}</td>
+                            <td>itui{{item.lotterysum}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+       <!-- <div class="lottery-top">
+            <div class="row">
+                <div class=" text-center lottery-number">
+                    1234&lt;!&ndash;{{lottery.lotteryno}}&ndash;&gt;
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center assertive lottery-fake">
+                   &lt;!&ndash; {lottery.bonus}}&ndash;&gt;1154<br/>
+                    1212
+                </div>
+            </div>
+        </div>
+
+        <div class="lottery-panel margin-top-10">
+            <div class="row">
+                <div class="col" style="font-weight:bold">
+                    今日抽奖
+                </div>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <table class="lottery-table">
+                        <tr>
+                            <th>用户</th>
+                            <th>中奖号码</th>
+                            <th>奖品</th>
+                        </tr>
+                        <tr ng-repeat="item in lottery.lotteryList">
+                            <td>{{item.uname}}</td>
+                            <td>{{item.hidenphone}}</td>
+                            <td>itui{{item.lotterysum}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="row directions">
+                <div class="col">
+                </div>
+            </div>
+        </div>
+
+        <div class="margin-top-10">
+            <div class="row review">
+                <div class="col text-center">
+                    上期号码<span>1234&lt;!&ndash;{{lotteryYes.lotteryno}}&ndash;&gt;</span>回顾 <i class="icon ion-log-in assertive"
+                                                                   ui-sref="lottery-review" nav-direction="forward"></i>
+                </div>
+            </div>
+        </div>-->
+    </ion-content>
+</ion-view>
+
+
+

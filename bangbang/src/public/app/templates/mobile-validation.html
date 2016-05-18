@@ -1,0 +1,24 @@
+<ion-view view-title="忘记密码" class="forget-passward">
+    <ion-content class="forget-passward-content login-content padding">
+        <div class="list">
+            <form name="userForm" id="userForm" role="form" novalidate="novalidate">
+                <div id="user-info" class="user-info">
+                    <label class="item item-input">
+                        <input type="password" placeholder="输入手机号" ng-model="user.passwd" name="userPasswd" required>
+                    </label>
+                    <label class="item item-input">
+                        <input type="password"  placeholder="输入验证码" ng-model="user.passwd" name="userPasswd" required style="width:70%;">
+                        <button class="button button-small" style="background:#727171;color: #ffffff;margin-right: 10px">
+                            获取验证码
+                        </button>
+                    </label>
+                </div>
+                <div class="padding-top">
+                    <button class="button button-full button-dark" ui-sref="forget-password" nav-direction="forward">
+                        下一步
+                    </button>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

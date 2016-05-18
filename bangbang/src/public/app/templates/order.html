@@ -1,0 +1,88 @@
+<ion-view class="order" view-title="我的订单" hide-back-button="true">
+
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-ios-arrow-thin-left" ui-sref="tab.user" nav-direction="back"></a>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <select style="border:none;" class="" ng-model="type" ng-change="orderListFun.getOrderByType(this)">
+      <option value="" selected>筛选</option>
+      <option value="0" ng-selected="type===0" >全部订单</option>
+      <option value="9" ng-selected="type===9" >钻石订单</option>
+      <option value="2" ng-selected="type===2" >翡翠订单</option>
+      <option value="1" ng-selected="type===1" >活动订单</option>
+    </select>
+  </ion-nav-buttons>
+
+  <div class="order-bar">
+    <div class="button-bar">
+      <a class="button button-clear" ng-class="{'button-energized':(state==-1 || state==null)}" ng-click="orderListFun.getOrderByState(-1)">全部</a>
+      <a class="button button-clear" ng-class="{'button-energized':(state==10)}" ng-click="orderListFun.getOrderByState(10)">待付款</a>
+      <a class="button button-clear" ng-class="{'button-energized':(state==20)}" ng-click="orderListFun.getOrderByState(20)">待发货</a>
+      <a class="button button-clear" ng-class="{'button-energized':(state==30)}" ng-click="orderListFun.getOrderByState(30)">待收货</a>
+      <a class="button button-clear" ng-class="{'button-energized':(state==0)}" ng-click="orderListFun.getOrderByState(0)">待评价</a>
+    </div>
+  </div>
+  <ion-content class="order-content">
+
+
+    <ion-refresher pulling-text="下拉刷新"	on-refresh="orderListFun.doRefresh()" spinner="android">
+    </ion-refresher>
+
+
+    <div class="list" ng-repeat="orderItem in orderList">
+      <div ng-repeat="(id,order) in orderItem.orderGoodsDetailList">
+        <div class="item item-divider"  >
+          <img src="views/bangbang/img/user_jade_icon2.png" style="width: 20px;vertical-align: middle" ng-if="(orderItem.paytype=='2')">
+          <img src="views/bangbang/img/user_diamond_icon2.png" style="width: 20px;vertical-align: middle" ng-if="(orderItem.paytype!='2')">
+          {{orderItem.billsResp.sellerName}} <!-- 订单号:{{orderItem.billsResp.paySn}}-->
+          <span style="float:right;color:#cccccc;font-size: 12px;" ng-if="(order.orderResp.orderStatus == '0')">已取消</span>
+          <span style="float:right;color:#cccccc;font-size: 12px;" ng-if="(order.orderResp.orderStatus == '10')">未付款</span>
+          <span style="float:right;color:#cccccc;font-size: 12px;" ng-if="(order.orderResp.orderStatus == '20')">已付款</span>
+          <span style="float:right;color:#cccccc;font-size: 12px;" ng-if="(order.orderResp.orderStatus == '30')">已发货</span>
+          <span style="float:right;color:#cccccc;font-size: 12px;" ng-if="(order.orderResp.orderStatus == '40')">已收货</span>
+        </div>
+
+        <a class="item row-no-padding gray-bg"  ui-sref="order-detail({'id': order.orderResp.id})">
+          <div class="row" ng-repeat="(id,goodsname) in order.orderGoodsList"  >
+            <div class="col col-20 order-goods-item">
+              <div class="order-goodsImg-panel"> <img src="{{goodsname.goodsImage}}" err-src=""> </div>
+            </div>
+            <div class="col col-80 order-goods-info">
+              <p style="font-size: 14px;">{{goodsname.goodsName}}</p>
+              <p>规格：{{goodsname.specInfo}}  <span>￥{{goodsname.goodsPayPrice}} </span></p>
+              <p>数量：{{goodsname.goodsNum}}</p>
+            </div>
+          </div>
+        </a>
+
+        <div class="item item-divider light-bg padding-top padding-bottom"  >
+          <p  style="text-align: right">  快递费￥{{order.orderResp.shippingFee}}元  合计：￥{{order.orderResp.goodsAmount}}元</p>
+        </div>
+
+        <div class="item item-divider light-bg padding-top padding-bottom text-right" style="border: 0px;" >
+          <!--<button class="button button-small button-outline btn-w-70" ng-if="(order.orderResp.orderStatus == '0')||(order.orderResp.orderStatus == '40')">-->
+          <!--删除订单-->
+          <!--</button>-->
+          <button class="button button-small button-assertive button-calm btn-w-70" ng-if="(order.orderResp.orderStatus == '10')" ng-click="orderListFun.pay_act(order.orderResp,orderItem.billsResp)">
+            付款
+          </button>
+          <!--ng-if="(orderItem.orderStatus == '40')&&(orderItem.evaluationState == '0')"-->
+          <button class="button button-small button-assertive button-calm btn-w-70" ui-sref="evaluation({orderId : order.orderResp.id })" nav-direction="forward" ng-if="(order.orderResp.orderStatus == '40')&&(order.orderResp.evaluationState == '0')"  >
+            评价
+          </button>
+          <button class="button button-small button-assertive button-balanced btn-w-70" ng-if="(order.orderResp.orderStatus == '30')||(order.orderResp.orderStatus == '40')" on-developing="">
+            物流信息
+          </button>
+          <button class="button button-small button-assertive button-energized btn-w-70" ng-if="(order.orderResp.orderStatus == '30')">
+            确认收货
+          </button>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div ng-show="orderListFun.moredata"  class="bottom_show"> 亲，数据加载完啦！</div>
+    <ion-infinite-scroll ng-if="!orderListFun.moredata"  on-infinite="orderListFun.loadMore()" distance="1%" ></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

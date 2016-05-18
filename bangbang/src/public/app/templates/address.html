@@ -1,0 +1,53 @@
+<ion-view class="address" view-title="收货地址">
+
+  <ion-content class="address-content">
+    <ion-refresher pulling-text="下拉刷新"	on-refresh="doRefresh()" spinner="android">
+    </ion-refresher>
+
+    <div class="address-list">
+      <div class="address-item" ng-repeat="addressItem in addressList" >
+        <div class="row">
+          <div class="col">
+            {{addressItem.consignee}}
+          </div>
+          <div class="col text-right">
+            {{addressItem.mobile}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            {{addressItem.addressName}}{{addressItem.address}}
+          </div>
+        </div>
+        <div style="border-top:1px solid #ddd">
+          <div class="row">
+            <div class="col">
+              <span class="default_active" ng-if="addressItem.pdefault==1"><i class="ion-ios-checkmark-outline"></i> 默认地址</span>
+            </div>
+            <div class="col text-right">
+              <label ui-sref="address-edit({id:addressItem.id})"><a><img src="img/address_edit.png" style="width:20px;vertical-align: middle">编辑</a></label>&nbsp;&nbsp;
+              <label  ng-click="deleteAddress(addressItem.id)"><img src="img/address_del.png" style="width:20px;vertical-align: middle">删除</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+
+  <div class="address-add">
+    <button class="button button-full light" ui-sref="address-edit" style="background:#ee7300">
+      添加收货地址+
+    </button>
+  </div>
+</ion-view>
+
+
+
+
+
+
+
+
+
+

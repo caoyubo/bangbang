@@ -1,0 +1,144 @@
+<ion-view class="user" view-title="我的中心">
+    <!--  <ion-nav-buttons side="left">
+        <img src="img/logo.png" menu-toggle="left" class="nav-left-logo"/>
+      </ion-nav-buttons>-->
+    <ion-nav-buttons side="right">
+        <button class="button icon ion-ios-cart-outline button-clear" ng-click="isLogin('cart')"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="user-content">
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" spinner="android">
+        </ion-refresher>
+        <div class="user-wrap">
+            <div class="user-info">
+                <div class="user-info-left">
+                    {{level.levelname}}级
+                </div>
+                <div class="user-info-right">
+                    <i ui-sref="message" nav-direction="forward">2</i>
+                </div>
+                <div class="user-info-phone">
+                    {{phone}}
+                </div>
+            </div>
+
+            <div class="row text-center ">
+                <div class="col col-70 " ui-sref="integral" nav-direction="forward">
+                    <span>钻石积分</span>
+                    <div class="Integral" ng-if="diamond.availBal"> <i>{{diamond.availBal}}</i></div>
+                    <div class="Integral" ng-if="diamond.availBal == null"><i>0.00</i></div>
+                </div>
+                <div class="col col-30 " ui-sref="my-fake-score" nav-direction="forward">
+                    <span>翡翠积分</span>
+                    <div class="Integral" ng-if="integral.point"><i>{{integral.point}}</i></div>
+                    <div class="Integral" ng-if="integral.point==null"><i>0.00</i></div>
+                </div>
+            </div>
+            <div class="user-deposit">
+                <a  ui-sref="deposit_2" nav-direction="forward" class="deposit-a">
+                    &nbsp;
+                </a>
+            </div>
+        </div>
+
+
+        <div class="user-order  ">
+            <div class="user-tabs">
+                <div class="button-bar">
+                    <a class="button" ng-click="myHref(10)">
+                        <!--<span class="badgeNum">23</span>-->
+                        <img src="../img/daizhifu.png" style="width:30px;height:auto">
+                        <p>待支付</p>
+                    </a>
+                    <a class="button" ng-click="myHref(20)">
+                        <img src="../img/daifahuo.png" style="width:30px;height:auto">
+                        <p>待发货</p>
+                    </a>
+                    <a class="button" ng-click="myHref(30)">
+                       <img src="../img/daishouhuo.png" style="width:30px;height:auto">
+                        <p>待收货</p>
+                    </a>
+                    <a class="button" ng-click="myHref(0)">
+                      <img src="../img/daipingjia.png" style="width:30px;height:auto">
+                        <p>待评价</p>
+                    </a>
+                    <a class="button jx" ng-click="myHref(null)">
+                        <img src="../img/dingdan.png" style="width:30px;height:auto">
+                        <p>订单></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="user-list-item">
+            <ul>
+                <li >
+                   <div class="user-list-item-li" ui-sref="recent-look" nav-direction="forward">
+                       <img src="../img/ll.jpg"  width="30">
+                       <span>浏览记录</span>
+                       <i  class="ion-chevron-right"></i>
+                   </div>
+                </li>
+                <li >
+                    <div class="user-list-item-li" ui-sref="collect" nav-direction="forward" style="border-bottom:0px;">
+                        <img src="../img/sc.jpg"  width="30">
+                        <span>我的收藏</span>
+                        <i  class="ion-chevron-right"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="user-list-item">
+            <ul>
+                <li >
+                    <div class="user-list-item-li" ui-sref="businessCenter" nav-direction="forward">
+                        <img src="../img/sj.jpg"  width="30">
+                        <span>商家中心</span>
+                        <i  class="ion-chevron-right"></i>
+                    </div>
+                </li>
+                <li >
+                    <div class="user-list-item-li" ui-sref="set-account" nav-direction="forward" >
+                        <img src="../img/zhsz.jpg"  width="30">
+                        <span>账户设置</span>
+                        <i  class="ion-chevron-right"></i>
+                    </div>
+                </li>
+                <li >
+                    <div class="user-list-item-li" ui-sref="code" nav-direction="forward" >
+                        <img src="../img/yqm.jpg"  width="30">
+                        <span>我的邀请码</span>
+                        <i  class="ion-chevron-right"></i>
+                    </div>
+                </li>
+                <li >
+                    <div class="user-list-item-li"  style="border-bottom:0px;" on-developing="">
+                        <img src="../img/yy.jpg"  width="30">
+                        <span>国家语言</span>
+                        <i  class="ion-chevron-right"></i>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="user-order ">
+            <ul class="list padding-top">
+                <li class="item no-border">
+                    <ul class="user-list ">
+                        <li class="user-item" on-developing>
+                            <img src="../img/user_customer_service.png" style="width:40px;vertical-align:middle">
+                            <span>{{siteName}}客服</span>
+                        </li>
+                        <li class="user-item" on-developing>
+                            <img src="../img/user_views.png" style="width:40px;vertical-align:middle">
+                            <span>意见反馈</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </ion-content>
+
+</ion-view>

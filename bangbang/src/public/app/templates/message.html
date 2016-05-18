@@ -1,0 +1,46 @@
+<ion-view class="message" view-title="消息中心">
+    <ion-nav-buttons side="left">
+        <a class="button button-icon icon ion-ios-arrow-thin-left" ui-sref="tab.user" nav-direction="back"></a>
+    </ion-nav-buttons>
+    <ion-content class="message-content">
+        <ion-refresher pulling-text="下拉刷新"	on-refresh="doRefresh()" spinner="android">
+        </ion-refresher>
+
+        <div ng-if="bill.list">
+            <div class="message-panel" ng-repeat="item in bill.list" ui-sref="message-detail({id : item.id })">
+                <div class="row">
+                    <div class="col col-30">
+                        <div class="img-panel">
+                            <img src="img/message.png">
+                        </div>
+                        <p>{{bill.createTime}}</p>
+                    </div>
+                    <div class="col col-70">
+                        <p class="message_type">{{item.title}}</p>
+                        <p class="message_detail">{{item.content}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="no-message" ng-if="bill.list && bill.list.length<=0">没有数据~~~</div>
+
+       <!-- <div class="message-panel">
+            <div class="row">
+                <div class="col col-30">
+                    <div class="img-panel">
+                        <img src="img/message.png">
+                    </div>
+                    <p>2016-03-15</p>
+                </div>
+                <div class="col col-70">
+                    <p class="message_type">通知消息</p>
+                    <p class="message_detail">你的订单已收货</p>
+                </div>
+            </div>
+        </div>-->
+
+        <ion-infinite-scroll on-infinite="load_more();" distance="1%" immediate-check="true" ng-if="moreDataCanBeLoaded">
+        </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

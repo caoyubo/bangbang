@@ -1,0 +1,191 @@
+<ion-view class="home" >
+  <ion-nav-buttons side="left">
+    <!--<img src="img/logo.png" menu-toggle="left" class="nav-left-logo"/>-->
+    <button class="button  icon ion-navicon button-clear" ng-click="openModal()"></button>
+    <label class="item item-input" ui-sref="store-search" nav-direction="forward">
+      <label class="search-btn"><i class="icon ion-search placeholder-icon"></i></label>
+      <input type="text" placeholder="搜索想要的商品/分类/品牌">
+    </label>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button class="button  icon ion-ios-cart-outline button-clear" ng-click="isLogin('cart')"></button>
+  </ion-nav-buttons>
+  <ion-content class="home-content">
+
+    <ion-refresher pulling-text="下拉刷新"	on-refresh="doRefresh()" spinner="android">
+    </ion-refresher>
+
+    <!--图片轮番效果-->
+    <ion-slide-box does-continue="true" slide-interval="3000" auto-play="true" class="home-slide" ng-if="isSlide">
+      <ion-slide ng-repeat="slideItem in slideImgList">
+        <a href="#">
+          <img src="{{imgUrl}}{{slideItem.resPath}}" width="100%">
+        </a>
+      </ion-slide>
+    </ion-slide-box>
+    <!--图片轮番效果 end-->
+    <div class="row text-center light-bg shop-data">
+      <div class="col padding0">用户：<span>429万</span></div>
+      <div class="col padding0">商家：<span>432万</span></div>
+      <div class="col padding0">流量：<span>453万</span></div>
+    </div>
+
+      <div class=" text-center category_home_list">
+        <li>
+          <a ui-sref="tab.category">
+            <img src="../img/preferential_price.png"/>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="fake-score" nav-direction="forward">
+            <img src="../img/register.png"/>
+          </a>
+        </li>
+        <li>
+          <a ui-sref="lottery" nav-direction="forward" >
+            <img src="../img/earn_points.png"/>
+          </a>
+        </li>
+
+        <li>
+          <a ui-sref="active" nav-direction="forward">
+            <img src="../img/shop.png"/>
+          </a>
+        </li>
+      </div>
+
+    <div class="row text-center light-bg margin-top5" >
+      <div class="col fake-score" >今日兑换</div>
+    </div>
+    <ion-slide-box does-continue="true" slide-interval="4000" auto-play="true" show-pager="false" class="home-slide light-bg" >
+      <ion-slide class="fake-score-show-list">
+        <div class="row row-no-padding">
+          <div class="col text-center"><img src="../img/1.jpg" width="90%">$10.00</div>
+          <div class="col text-center"><img src="../img/2.jpg" width="90%">$20.00</div>
+          <div class="col text-center"><img src="../img/3.jpg" width="90%">$10.00</div>
+          <div class="col text-center"><img src="../img/4.jpg" width="90%">$10.00</div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="row row-no-padding">
+          <div class="col text-center"><img src="../img/1.jpg" width="90%">$10.00</div>
+          <div class="col text-center"><img src="../img/2.jpg" width="90%">$10.00</div>
+          <div class="col text-center"><img src="../img/3.jpg" width="90%">$20.00</div>
+          <div class="col text-center"><img src="../img/4.jpg" width="90%">$10.00</div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <div class="row  home-link  text-center">
+      <div class="col ">
+        <div  class="home-link-a"  ui-sref="register" nav-direction="forward" >
+          用户注册
+        </div>
+      </div>
+      <div class="col">
+        <div class="home-link-a" nav-direction="forward" ng-click="isLogin('store-register')">
+          我要开店
+        </div>
+      </div>
+    </div>
+    <div class="row home-link text-center">
+      <div class="col">
+        <div class="home-link-a"  nav-direction="forward" on-developing="">
+          广告发布
+        </div>
+      </div>
+      <div class="col">
+        <div class="home-link-a" nav-direction="forward" on-developing="">
+          厂家进驻
+        </div>
+      </div>
+    </div>
+
+    <!--<div class="home-tit-Advertisement padding-left padding-right">
+      <span class="assertive" style="font-size: 22px;">标题广告</span>
+      <span>[号外]好一商城启动上线</span>
+    </div>
+    <div class="home-Advertisement text-center">
+      <img src="img/advertisement_01.png"/>
+    </div>
+
+    &lt;!&ndash;推广&ndash;&gt;
+    <div class="home-Promotion row">
+      <div class="col">
+        <img src="img/advertisement_02.png"/>
+      </div>
+      <div class="col">
+        <div class="row row-no-padding padding-left padding-bottom">
+          <div class="col"><img src="img/advertisement_03.png"/></div>
+        </div>
+        <div class="row row-no-padding padding-left">
+          <div class="col"><img src="img/advertisement_03.png"/></div>
+        </div>
+
+      </div>
+    </div>-->
+
+    <!--商品推廣 -->
+    <div class="goods-list-panel">
+      <div class="list">
+        <a class="item item-thumbnail-left" ng-repeat="item in spreadGoods" on-tap='myHref(item.resLink)'>
+          <img ng-if="item.resPath" src="{{imgUrl}}{{item.resPath}}">
+          <img ng-if="!item.resPath" src="../img/item_pic.jpg">
+          <h2>{{item.resName}}</h2>
+          <p style="color: #A92A07">￥{{item.price}}</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="goods-list-panel">
+      <div class="list">
+        <a class="item item-thumbnail-left" ng-repeat="goodsItem in goodsList" on-tap='myHref(goodsItem.id)'>
+          <img ng-if="goodsItem.goodsimg" src="{{imgUrl}}{{goodsItem.goodsimg}}">
+          <img ng-if="!goodsItem.goodsimg" src="../img/item_pic.jpg">
+          <h2>{{goodsItem.goodsname}}</h2>
+          <p style="color: #A92A07"> ￥{{goodsItem.shopprice}} </p>
+        </a>
+      </div>
+    </div>
+
+    <ion-infinite-scroll on-infinite="load_more();" distance="1%" immediate-check="true" ng-if="moreDataCanBeLoaded">
+    </ion-infinite-scroll>
+
+  </ion-content>
+  <script id="my-modal.html" type="text/ng-template">
+    <ion-modal-view class="model-panel">
+      <ion-header-bar class="bar-clear">
+        <a class="button " ng-click="closeModal();"></a>
+        <!--<h1 class="title">快速导航</h1>-->
+      </ion-header-bar>
+
+      <div class="list list-inset" style="margin-top: 60px;">
+        <label class="item item-input">
+          <label class="search-btn" ng-click="search()"><i class="icon ion-search placeholder-icon"></i></label>
+          <input type="text" placeholder="Search" name="goodsname" ng-model="goodsname">
+        </label>
+      </div>
+
+      <div class="row responsive-sm" >
+        <div class="col"  ng-click="home.homeLink('{{link}}');">你好，{{name}}</div>
+        <div class="col" ng-click="home.homeLink('#/message');">消息提醒</div>
+        <div class="col" ng-click="home.homeLink('#/code');">我的邀请码</div>
+      </div>
+      <div class="row responsive-sm">
+        <div class="col" ui-sref="order" ng-click="home.homeLink('#/order/');">我的订单</div>
+        <div class="col" ng-click="home.homeLink('#/set-account');">我的账户</div>
+        <div class="col" ng-click="home.homeLink('#/deposit_2');">快速充值</div>
+
+      </div>
+      <div class="row responsive-sm">
+        <div class="col" on-developing="">{{siteName}}客服</div>
+        <div class="col" on-developing="">法律条款</div>
+        <div class="col" on-developing="">关于我们</div>
+        <div class="col" on-developing="">应用程序评价</div>
+        <div class="col" ng-click="logout()">退出</div>
+      </div>
+    </ion-modal-view>
+  </script>
+</ion-view>
+
+

@@ -1,0 +1,47 @@
+<ion-view class="businessCenter" view-title="商家中心">
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-ios-arrow-thin-left" ui-sref="tab.user" nav-direction="back"></a>
+  </ion-nav-buttons>
+
+  <ion-content class="businessCenter-content">
+    <div class="admin-panel row text-left">
+      <div class="col col-20 text-left"><img src="img/store-logo.png" class="store_logo"/></div>
+      <div class="col col-50 text-left">[苹果]官方旗舰店</div>
+      <div class="col col-30 padding-top">
+        <a class="button button-small padding-right padding-left" style="background:#00913A;color:#ffffff">解除绑定</a>
+      </div>
+    </div>
+
+    <div class="admin-panel2" >
+      <div class="row">
+        <div class="col">
+          <p>商户M0774，邀请你成为管理员</p>
+          <p class="p_btn">
+            <a class="button button-small button-outline padding-right padding-left" style="border:1px solid #ffffff;color:#ffffff">同意邀请</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="button button-small button-outline padding-right padding-left" style="border:1px solid #ffffff;color:#ffffff">取消</a>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row" style="background: #ffffff;">
+      <div class="col text-center" style="color:red">
+        申请信息列表
+      </div>
+    </div>
+    <div class="list agent-goods-list">
+      <div class="item row" ng-repeat="info in goodsList">
+        <div class="col col-25">
+          <div class="img-panel">
+            <img src="img/100-100.jpg">
+          </div>
+        </div>
+        <div class="col col-50">{{info.goodsName}}</div>
+        <div class="col col-25 text-right calm">申请中</div>
+      </div>
+      <div ng-if="goodsList && goodsList.length<=0" class="no-message">列表为空~~</div>
+    </div>
+
+  </ion-content>
+</ion-view>

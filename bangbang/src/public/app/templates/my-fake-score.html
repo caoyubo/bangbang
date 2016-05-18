@@ -1,0 +1,62 @@
+<ion-view class="integral" view-title="我的翡翠积分">
+
+  <ion-nav-buttons side="left">
+    <a class="button button-icon icon ion-ios-arrow-thin-left" ui-sref="tab.user" nav-direction="back"></a>
+  </ion-nav-buttons>
+
+  <ion-content class="integral-content">
+    <ion-refresher pulling-text="下拉刷新"	on-refresh="doRefresh()" spinner="android">
+    </ion-refresher>
+    <div class="row integral-notice fake-score-notice">
+      <div class="col dark" >积分公告：</div>
+    </div>
+
+    <div class="integral-panel fake-score-panel">
+      <div class="row responsive-sm">
+        <div class="col">
+          <div class="row row-no-padding">
+            <div class="col light">
+              什么是翡翠积分
+              <span class="whatIsIntegral" style="color:#009e87;">?</span>
+            </div>
+          </div>
+        </div>
+        <div class="integral-k">
+          {{integral.point}}0
+        </div>
+        <div class="integral-bk"> </div>
+      </div>
+    </div>
+
+    <div class="list">
+      <!--<div class="item item-divider">-->
+        <!--本月-->
+      <!--</div>-->
+      <a class="item positive bill-detail" ng-repeat="item in jadeList">
+        <div style="color:#d5d5d5;">
+          <p style="font-size: 12px;">时间</p>
+          <p style="font-size: 12px; color:#939393">{{getDateFormat(item.createtime)}}</p>
+        </div>
+        <!--<div class="circle positive-bg light text-center" ng-if="item.dealType == '0001'">出</div>
+        <div class="circle calm-bg light text-center" ng-if="item.dealType == '0002'">入</div>-->
+        <div ng-if="item.tclass==2">
+          <p style="font-size: 14px; color:#4EC83B">&nbsp;&nbsp;+{{item.point}}</p>
+          <p style="font-size: 12px; color:#939393">&nbsp;&nbsp;积分发放</p>
+        </div>
+        <div ng-if="item.tclass！=2">
+          <p style="font-size: 14px; color:red">&nbsp;&nbsp;-{{item.point}}</p>
+          <p style="font-size: 12px; color:#939393">&nbsp;&nbsp;积分购买</p>
+        </div>
+      </a>
+
+     <!-- <a class="item positive bill-detail" href="#">
+        <div style="color:#d5d5d5;line-height: 35px;">时间</div>
+        <div class="circle positive-bg light text-center">购</div>
+        <div>
+          <p style="font-size: 14px;">+100</p>
+          <p style="font-size: 12px; color:#939393">商品名称</p>
+        </div>
+      </a>-->
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,58 @@
+<ion-view class="integral" view-title="我的钻石积分">
+
+    <ion-nav-buttons side="left">
+        <a class="button button-icon icon ion-ios-arrow-thin-left" ui-sref="tab.user" nav-direction="back"></a>
+    </ion-nav-buttons>
+
+    <ion-content class="integral-content">
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" spinner="android">
+        </ion-refresher>
+        <div class="row integral-notice">
+            <div class="col">积分公告：</div>
+        </div>
+        <div class="integral-panel">
+            <div class="row responsive-sm">
+                <div class="col">
+                    <div class="row row-no-padding">
+                        <div class="col light">
+                            什么是钻石积分
+                            <span class="whatIsIntegral">?</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="integral-k">
+                    {{diamond.availBal}}
+                </div>
+                <div class="integral-bk">
+                    冻结钻石{{diamond.frozenBal}}
+                </div>
+            </div>
+        </div>
+
+        <div class="user-other">
+            <ul class="list padding-top" ui-sref="deposit">
+                <li class="item item-icon-right"><a href="#"><i class="icon ion-ios-arrow-right"></i>充值</a></li>
+            </ul>
+        </div>
+
+        <div class="user-other" ui-sref="withdraw">
+            <ul class="list padding-top">
+                <li class="item item-icon-right"><a><i class="icon ion-ios-arrow-right"></i>提现</a></li>
+            </ul>
+        </div>
+
+        <div class="user-other" ui-sref="diamond-bill">
+            <ul class="list padding-top">
+                <li class="item item-icon-right"><a><i class="icon ion-ios-arrow-right"></i>钻石积分账单</a></li>
+            </ul>
+        </div>
+
+        <!--<div class="user-other">-->
+        <!--<ul class="list padding-top" ui-sref="bill">-->
+        <!--<li class="item item-icon-right"><a><i class="icon ion-ios-arrow-right"></i>积分账单</a></li>-->
+        <!--</ul>-->
+        <!--</div>-->
+    </ion-content>
+</ion-view>

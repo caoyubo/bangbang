@@ -1,0 +1,97 @@
+<ion-view view-title="用户注册" class="register" hide-back-button="true">
+  <ion-nav-buttons side="left">
+    <a href="javascript:history.back(-1)" class="button button-icon icon ion-ios-arrow-thin-left" nav-direction="back"></a>
+  </ion-nav-buttons>
+
+  <ion-content class="register-content login-content">
+    <form name="userForm" id="userForm" role="form" novalidate="novalidate">
+      <div class="user-list-item">
+        <ul>
+          <li >
+            <div class="user-list-item-li" style="border-bottom:0px;">
+              <span> <input type="text" placeholder="输入邀请码" ng-model="user.code" name="code"></span>
+              <i  class="ion-android-expand"></i>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="user-list-item">
+        <ul>
+          <li >
+            <div class="user-list-item-li" >
+              <img src="views/bangbang/img/name.jpg"  width="30">
+              <span> <input type="text" placeholder="请输入用户名" ng-model="user.username" name="userName" required></span>
+            </div>
+          </li>
+          <p class="error" ng-show="userForm.userName.$dirty&&userForm.userName.$error.required">账号不能为空！</p>
+          <li >
+            <div class="user-list-item-li" >
+              <img src="views/bangbang/img/phone.jpg"  width="30">
+              <span>    <input type="text" placeholder="请输入手机号码" ng-model="user.phone" name="userPhone" required ng-pattern="/^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/"></span>
+            </div>
+          </li>
+          <p class="error" ng-show="userForm.userPhone.$dirty&&userForm.userPhone.$error.required">手机号码不能为空！</p>
+          <p class="error" ng-show="userForm.userPhone.$dirty&&userForm.userPhone.$error.pattern">手机号码格式不正确！</p>
+          <li >
+            <div class="user-list-item-li" style="border-bottom:0px;">
+              <span>    <input type="text" placeholder="请输入验证码" ng-model="user.rcode" name="userRcode" required></span>
+              <button class="button button-small button-calm" ng-model="rcodeBtnText" ng-class="{'disabled':isabled}" ng-click="getRcode()" style="color: #ffffff;margin-right: 10px">
+                {{rcodeBtnText}}
+              </button>
+            </div>
+          </li>
+          <p class="error" ng-show="userForm.userRcode.$dirty&&userForm.userRcode.$error.required">验证码不能为空！</p>
+        </ul>
+      </div>
+
+      <div class="user-list-item">
+        <ul>
+          <li >
+            <div class="user-list-item-li" >
+              <img src="views/bangbang/img/password.jpg"  width="30">
+              <span>  <input type="password" placeholder="请输入密码" ng-model="user.passwd" name="userPasswd" id="userPasswd" required></span>
+            </div>
+          </li>
+          <p class="error" ng-show="userForm.userPasswd.$dirty&&userForm.userPasswd.$error.required">密码不能为空！</p>
+          <li >
+            <div class="user-list-item-li" style="border-bottom:0px;">
+              <img src="views/bangbang/img/password2.jpg"  width="30">
+              <span><input type="password" placeholder="请再一次输入密码" ng-model="user.repasswd" name="userRepasswd" required pw-check="userPasswd"></span>
+            </div>
+          </li>
+          <p class="error" ng-show="userForm.userRepasswd.$dirty && userForm.userRepasswd.$invalid">两次输入的密码不相等</p>
+        </ul>
+      </div>
+
+      <div class="list padding">
+        <div class="row responsive-sm" id="state-wrap">
+          <div class="col text-center">{{siteName}}隐私声明
+          </div>
+        </div>
+        <div class="row check-wrap">
+          <div class="col">
+            <ion-checkbox ng-model="favor.isChecked" style="border:none;">我已阅读并同意声明</ion-checkbox>
+          </div>
+        </div>
+        <button class="button   button-energized" style="width: 100%;margin-bottom: 15px;" ng-click="register(userForm)" ng-disabled="userForm.$invalid">
+          注册
+        </button>
+        <br/>
+        <div class="row">
+          <div class="col text-center">
+            <a href="#/forget-password" style="color:#7f7e7e">
+              <span style="text-decoration:line-through;padding-left: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+              已拥有账户
+              <span style="text-decoration:line-through;padding-left: 10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </a>
+          </div>
+        </div>
+        <button class="button  button-dark" style="width: 100%"  ui-sref="login">
+          立即登陆
+        </button>
+
+    </div>
+    </form>
+  </ion-content>
+</ion-view>

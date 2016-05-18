@@ -1,0 +1,88 @@
+<ion-view view-title="分类">
+    <ion-nav-buttons side="left">
+        <button class="button  icon ion-navicon button-clear" ng-click="openModal()"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+        <button class="button  icon ion-ios-cart-outline button-clear" ng-click="isLogin('cart')"></button>
+    </ion-nav-buttons>
+
+    <div class="list search" style="margin-bottom: 0px;">
+        <label class="item item-input" ui-sref="store-search" nav-direction="forward">
+            <label class="search-btn"><i class="icon ion-search placeholder-icon"></i></label>
+            <input type="text" placeholder="搜索">
+        </label>
+    </div>
+
+
+    <div class="category-panel row">
+        <!--一级分类-->
+        <ion-content class="col-25 category-panel-left" overflow-scroll="true">
+            <ion-list class="w-100 class-font-style">
+                <ion-item class="list-tab-bg text-center  " ng-class="{'selected':classItem.selected}" style="white-space:inherit;"
+                          ng-repeat="classItem in firstClass | orderBy:'goods_class.sort'" ng-click="getChildClass(classItem.goods_class.id)">
+                    <label>{{classItem.goods_class.name}}</label>
+                </ion-item>
+            </ion-list>
+        </ion-content>
+        <!-- 二级分类-->
+        <ion-content class="col-75 col-offset-25  category-panel-right " overflow-scroll="true">
+
+            <div class="category-list" ng-repeat="classItem in SecAndThrClass | orderBy:'goods_class.sort'">
+                <div class="light-bg  searchHot ">
+                    <h2>热销排行 <i class="ion-chevron-right"></i></h2>
+                    <p>款款惊爆价</p>
+                </div>
+                <div class="category-second-list col-offset-4"><h4>{{classItem.goods_class.name}}</h4></div>
+                <div class="category-third-list" ng-if="classItem.goods_class.childs.length>0">
+                    <ul>
+                        <li class="category-third-item" ng-repeat="childItem in classItem.goods_class.childs | orderBy:'sort'">
+                            <a href="#shop-category/{{childItem.id}}">
+                            <div class="images-panel">
+                                <img ng-src="{{imgUrl}}{{childItem.imgpath}}" err-src>
+                            </div>
+                            <p>{{childItem.name}}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ion-content>
+
+    </div>
+
+
+    <script id="my-modal.html" type="text/ng-template">
+        <ion-modal-view class="model-panel">
+            <ion-header-bar class="bar-clear">
+                <a class="button " ng-click="closeModal();"></a>
+                <!--<h1 class="title">快速导航</h1>-->
+            </ion-header-bar>
+
+            <div class="list list-inset" style="margin-top: 60px;">
+                <label class="item item-input">
+                    <label class="search-btn" ng-click="search()"><i class="icon ion-search placeholder-icon"></i></label>
+                    <input type="text" placeholder="Search" name="goodsname" ng-model="goodsname">
+                </label>
+            </div>
+
+            <div class="row responsive-sm" >
+                <div class="col"  ng-click="home.homeLink('{{link}}');">你好，{{name}}</div>
+                <div class="col" ng-click="home.homeLink('#/message');">消息提醒</div>
+                <div class="col" ng-click="home.homeLink('#/code');">我的邀请码</div>
+            </div>
+            <div class="row responsive-sm">
+                <div class="col" ui-sref="order" ng-click="home.homeLink('#/order/');">我的订单</div>
+                <div class="col" ng-click="home.homeLink('#/set-account');">我的账户</div>
+                <div class="col" ng-click="home.homeLink('#/deposit_2');">快速充值</div>
+
+            </div>
+            <div class="row responsive-sm">
+                <div class="col" on-developing="">{{siteName}}客服</div>
+                <div class="col" on-developing="">法律条款</div>
+                <div class="col" on-developing="">关于我们</div>
+                <div class="col" on-developing="">应用程序评价</div>
+                <div class="col" ng-click="logout()">退出</div>
+            </div>
+        </ion-modal-view>
+    </script>
+</ion-view>

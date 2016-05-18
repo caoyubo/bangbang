@@ -1,0 +1,160 @@
+/* Empty. Add your own CSS if you like */
+
+/* 抽奖  */
+.lottery-title{
+    display: block;
+    height: 100%;
+    background: url("../img/lottery-top-bg.jpg") no-repeat;
+    background-size: 100%;
+}
+
+.lottery-title h2{
+    background: url("../img/lottery-title.png")  center  no-repeat;
+    text-align: center;
+    background-size: 50%;
+    font-size: 14px;
+    color: #fff;
+    line-height: 103px;
+    font-weight: bold;
+}
+.lottery_content{
+    background: url("../img/lottery-ionic.fw.png") center no-repeat;
+    background-size: 80%;
+}
+.lottery-date{
+    padding-top: 19%;
+    color: #fff;
+    text-align: center;
+}
+.lottery-money{
+    color: #D03123;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+.lottery_content_t{
+    padding-top: 18%;
+    color: #D03123;
+    font-size: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+.lottery-top{
+    background: url("../img/lottery.jpg")  no-repeat;
+    background-size: 100% 100%;
+    height: 260px;
+
+}
+.lottery-number{
+    margin-top:70px;
+    font-size:490%;
+    letter-spacing:5px;
+    padding-left: 3px;
+    width: 100%;
+    display: block;
+    clear: both;
+    height: 50px;
+    color: #BD3318;
+    font-family: Arial;
+}
+.lottery-fake{
+    margin-top: 55px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+.lottery-content{
+    background: url("../img/lottery-bg.jpg")  repeat-y;
+    background-size: 100%;
+    font-size: 14px;
+}
+.lottery-table{
+    border-collapse:collapse;
+    width:100%;
+    text-align: center;
+    background: url("../img/lottery-table.png") center no-repeat;
+    background-size: 80%;
+    height: 250px;
+}
+.lottery-tab{
+    border-collapse:collapse;
+    width:60%;
+    margin: 0 auto;
+    text-align: center;
+    background: #fff;
+}
+.bottom_show {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    clear: both;
+    color: #aaa;
+
+}
+.lottery-table td,.lottery-table th{
+    border:1px solid #231815;
+    padding:5px 0px;
+}
+
+.lottery-content .directions{
+    color: #8699a4;
+    font-size: 12px;
+}
+
+.lottery-content .review .col{
+    color:red;
+    line-height: 50px;
+}
+.lottery-content .review .col i{
+    font-size: 20px;
+    margin-left: 10px;
+    vertical-align: bottom;
+    font-weight: bold;
+
+}
+.lottery-content .review .col span{
+   display: inline-block;
+    line-height: 25px;
+    padding:0px 10px;
+    border:2px solid red;
+    margin: 0px 10px;
+    border-radius:15px;
+    word-spacing: 15px;
+    letter-spacing: 5px
+
+}
+.lottery-review-content .item-divider{
+    background:#FFF9D7;
+    border: 1px solid #FFFCEB;
+    border-left:0px;
+    border-right: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.lottery-review-content .item{
+    background: #FFFCEB;
+    border-color: #FFF9D7;
+}
+
+.lottery-review-content .list{
+    margin-bottom: 0px;
+}
+.lottery-review-content .item{
+    padding-top:10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    color:#444;
+}
+
+.no-message{
+    color : #727171;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.order-bar .button-bar > .button{
+    padding: 0px;
+}

@@ -1,0 +1,68 @@
+<ion-view class="code" view-title="我的邀请码">
+    <ion-nav-buttons side="left">
+        <a class="button button-icon icon ion-ios-arrow-thin-left" ui-sref="tab.user" nav-direction="back"></a>
+    </ion-nav-buttons>
+    <ion-content class="code-content text-center">
+        <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()" spinner="android">
+        </ion-refresher>
+        <div class="code-er">
+            <div class="code-panel" id="code-panel">
+            </div>
+            长按保存并转发
+        </div>
+        <div class="code-btn">
+            <div class="code-btn-a" >
+                <a class=" " ui-sref="getReferences" nav-direction="forward">查看已邀请的人</a>
+            </div>
+            <div class="code-shengji" ng-show="levelList.length != 0 && stateInfo.verify!=2">
+                <div class="row responsive-sm">
+                    <div class="col text-center" style="color:#544e3e;font-size: 16px;border-bottom: 1px solid #f6a181">
+                        申请升级会员
+                    </div>
+                </div>
+                <!--<div class="row responsive-sm" ng-show="(stateInfo.verify == 0 ||stateInfo.verify == 1)">
+                  <div class="col" style="font-size: 18px; font-weight: bold;color: red;">
+                    审核中......
+                  </div>
+                </div>-->
+                <div class="padding-bottom">
+                    <table class="stateInfo" ng-show="(stateInfo.verify == 0 ||stateInfo.verify == 1)">
+                        <tr>
+                            <td colspan="2" class="text-left">&nbsp;&nbsp;状态</td>
+                        </tr>
+                        <tr>
+                            <td>从A级升级到C级</td>
+                            <td>审核中</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row responsive-sm" ng-show="(stateInfo.verify == -1)">
+                    <div class="col">
+                        <button class="button button-assertive" style="width:60%;"
+                                ui-sref="luishui({level:stateInfo.newlevel})">继续支付
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-shengji"
+                 ng-show="levelList.length != 0 &&(stateInfo.verify == 2 || stateInfo.verify == 9)">
+                <div class="row responsive-sm">
+                    <div class="col text-center" style="color:#544e3e;font-size: 16px;border-bottom: 1px solid #f6a181">
+                        选择升级的会员等级
+                    </div>
+                </div>
+                <div class="row responsive-sm">
+                    <div class="col" ng-repeat="levelItem in levelList">
+                        <a href="#/upgrade/{{levelItem.id}}" ng-if="levelItem.name=='A'"><img
+                                src="img/members-A.png"></a>
+                        <a href="#/upgrade/{{levelItem.id}}" ng-if="levelItem.name=='B'"><img
+                                src="img/members-B.png"></a>
+                        <a href="#/upgrade/{{levelItem.id}}" ng-if="levelItem.name=='C'"><img
+                                src="img/members-C.png"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="code-shengji-bottom" ng-show="levelList.length != 0"></div>
+    </ion-content>
+</ion-view>
