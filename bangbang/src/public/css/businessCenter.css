@@ -1,90 +1,92 @@
-.businessCenter{
-  font-size: 14px;
-  background: #dddddd;
+.businessCenter {
+    font-size: 14px;
+    background: #dddddd;
 }
 
-.businessCenter .bar-subheader a{
-  width:96%;
-  display: block;
-  height:100%;
-  line-height: 34px;
-  padding:0px 2%;
+.businessCenter .bar-subheader a {
+    width: 96%;
+    display: block;
+    height: 100%;
+    line-height: 34px;
+    padding: 0px 2%;
 }
 
-.businessCenter .bar-subheader a i{
-  float: right;
-  font-size: 20px;
+.businessCenter .bar-subheader a i {
+    float: right;
+    font-size: 20px;
 }
 
-.businessCenter-content{
+.businessCenter-content {
 }
 
-.businessCenter-tabs{
-  margin-top: 10px;
-  background:#ffffff;
-}
-.businessCenter-tabs a{
-  display: inline-block;
-  line-height: 34px;
+.businessCenter-tabs {
+    margin-top: 10px;
+    background: #ffffff;
 }
 
-.businessCenter-tabs a.active{
-  color:#e83928;
-  border-bottom: 4px solid #e83928;
+.businessCenter-tabs a {
+    display: inline-block;
+    line-height: 34px;
 }
 
-.businessCenter-content .img-panel{
-  width:40px;
-  height:40px;
+.businessCenter-tabs a.active {
+    color: #e83928;
+    border-bottom: 4px solid #e83928;
 }
 
-.businessCenter-content .img-panel img{
-  display: block;
-  width:100%;
+.businessCenter-content .img-panel {
+    width: 40px;
+    height: 40px;
 }
 
-.businessCenter-content .agent-goods-list .col{
-  font-size:12px;
-  line-height: 40px;
+.businessCenter-content .img-panel img {
+    display: block;
+    width: 100%;
 }
 
-.businessCenter-content .admin-panel{
-  background: #3e3a39;
+.businessCenter-content .agent-goods-list .col {
+    font-size: 12px;
+    line-height: 40px;
 }
 
-.businessCenter-content .admin-panel:after{
-  display: block;
-  visibility: visible;
-  content: "";
-  clear: both;
+.businessCenter-content .admin-panel {
+    background: #3e3a39;
 }
 
-.businessCenter-content .admin-panel div{
-  display:inline-table;
-  vertical-align: middle;
-  line-height: 60px;
-  color: #ffffff;
-}
-.businessCenter-content .admin-panel div img{
-  display: block;
+.businessCenter-content .admin-panel:after {
+    display: block;
+    visibility: visible;
+    content: "";
+    clear: both;
 }
 
-.businessCenter-content .admin-panel div a{
-  margin: auto;
-  margin-top:8%;
+.businessCenter-content .admin-panel div {
+    display: inline-table;
+    vertical-align: middle;
+    line-height: 60px;
+    color: #ffffff;
 }
 
-.businessCenter-content .admin-panel2{
-  background:#42A5F5;
-  color: #ffffff;
-  border-bottom: 5px solid #E60012;
+.businessCenter-content .admin-panel div img {
+    display: block;
 }
 
-.businessCenter-content .store_logo{
-  width:60px;
-  border-radius:50%;
+.businessCenter-content .admin-panel div a {
+    margin: auto;
+    margin-top: 8%;
 }
 
-.businessCenter-content .admin-panel2 p.p_btn{
-  margin-bottom: 0px;
+.businessCenter-content .admin-panel2 {
+    background: #42A5F5;
+    color: #ffffff;
+    border-bottom: 5px solid #E60012;
+}
+
+.businessCenter-content .store_logo {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.businessCenter-content .admin-panel2 p.p_btn {
+    margin-bottom: 0px;
 }
